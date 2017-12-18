@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 using OxyPlot;
+using OxyPlot.Axes;
 using OxyPlot.Series;
 
 
@@ -33,6 +22,21 @@ namespace SQLiteSample
             X_line.Points.Add(new DataPoint(3, 3));
             Model.Series.Add(X_line);
 
+            var axisY = new LinearAxis()
+            {
+                Title = "datas",
+                IsZoomEnabled = false,
+                Position = AxisPosition.Left,
+                Maximum = 150,
+                Minimum = 50,
+                MajorStep = 10,
+                MajorGridlineStyle = LineStyle.Solid,
+                MinorGridlineStyle = LineStyle.Dot,
+                ExtraGridlines = new double[] { 1,2,3,8,9,10 },
+                ExtraGridlineThickness = 3,
+                ExtraGridlineColor = OxyColors.SkyBlue,
+            };
+            Model.Axes.Add(axisY);
         }
     }
 }

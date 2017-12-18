@@ -4,7 +4,9 @@
 
              xmlns:local="clr-namespace:GraphDemo"
              xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
-             x:Class="SQLiteSample.Page1">
+             x:Class="SQLiteSample.Page1"
+                          Title="GraphPage">
+
     <ContentPage.Content>
             <StackLayout>
                 <oxy:PlotView Model="{Binding Model}"
