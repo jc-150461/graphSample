@@ -16,20 +16,17 @@ namespace SQLiteSample
 
         public  LineChart()
         {
+            DataPoint[] itemList =  getItemList();
 
-            TodoItemDatabase itemDataBase = TodoItemDatabase.getDatabase();
-            List<TodoItem> itemList  =  itemDataBase.GetItemsAsync();
             this.Model = new PlotModel { Title = "LineChart" };
 
             var X_line = new LineSeries();
             X_line.Color = OxyColors.Red;
-            foreach(TodoItem item in itemList)
+            foreach (DataPoint dp in itemList)
             {
-                DataPoint dp = new DataPoint(item.ID, item.Count);
                 X_line.Points.Add(dp);
 
             }
-
 
             X_line.Points.Add(new DataPoint(3, 3));
             Model.Series.Add(X_line);
@@ -44,11 +41,24 @@ namespace SQLiteSample
                 MajorStep = 10,
                 MajorGridlineStyle = LineStyle.Solid,
                 MinorGridlineStyle = LineStyle.Dot,
-                ExtraGridlines = new double[] { 1,2,3,8,9,10 },
+                ExtraGridlines = new double[] { 1, 2, 3, 8, 9, 10 },
                 ExtraGridlineThickness = 3,
                 ExtraGridlineColor = OxyColors.SkyBlue,
             };
             Model.Axes.Add(axisY);
+        }
+
+        private static async Task<DataPoint[]> getItemList()
+        {
+            TodoItemDatabase itemDataBase = TodoItemDatabase.getDatabase();
+            List<TodoItem> itemList = await itemDataBase.GetItemsAsync();
+            DataPoint[] points = new DataPoint[itemList.Count];
+            int i = 0;
+            foreach (TodoItem item in itemList)
+            {
+                points[i++] = new DataPoint(item.ID, item.Count);
+            }
+            return points;
         }
     }
 }
