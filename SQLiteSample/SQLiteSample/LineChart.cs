@@ -2,7 +2,11 @@
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
-
+using Xamarin.Forms;
+using SQLiteSample;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Collections;
 
 namespace SQLiteSample
 {
@@ -10,15 +14,23 @@ namespace SQLiteSample
     {
         public PlotModel Model { get; private set; }
 
-        public LineChart()
+        public  LineChart()
         {
+
+            TodoItemDatabase itemDataBase = TodoItemDatabase.getDatabase();
+            List<TodoItem> itemList  =  itemDataBase.GetItemsAsync();
             this.Model = new PlotModel { Title = "LineChart" };
 
             var X_line = new LineSeries();
             X_line.Color = OxyColors.Red;
-            X_line.Points.Add(new DataPoint(0, 0));
-            X_line.Points.Add(new DataPoint(1, 4));
-            X_line.Points.Add(new DataPoint(2, 1));
+            foreach(TodoItem item in itemList)
+            {
+                DataPoint dp = new DataPoint(item.ID, item.Count);
+                X_line.Points.Add(dp);
+
+            }
+
+
             X_line.Points.Add(new DataPoint(3, 3));
             Model.Series.Add(X_line);
 

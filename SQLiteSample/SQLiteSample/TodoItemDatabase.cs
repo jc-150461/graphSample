@@ -21,6 +21,10 @@ namespace SQLiteSample
             return database.Table<TodoItem>().ToListAsync();
         }
 
+
+
+
+
         public Task<List<TodoItem>> GetItemsNotDoneAsync()
         {
             return database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0 "
