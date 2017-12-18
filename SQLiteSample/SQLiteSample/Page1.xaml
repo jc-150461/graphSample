@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 
-             xmlns:local="clr-namespace:GraphDemo"
+             xmlns:local="clr-namespace:SQLiteSample"
              xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
              x:Class="SQLiteSample.Page1"
                           Title="GraphPage">
