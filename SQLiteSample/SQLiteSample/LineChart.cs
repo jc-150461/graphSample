@@ -48,10 +48,11 @@ namespace SQLiteSample
             Model.Axes.Add(axisY);
         }
 
-        private static async Task<DataPoint[]> getItemList()
+        private static DataPoint[] getItemList()
         {
             TodoItemDatabase itemDataBase = TodoItemDatabase.getDatabase();
-            List<TodoItem> itemList = await itemDataBase.GetItemsAsync();
+            Task<List<TodoItem>> taskItemList =  itemDataBase.GetItemsAsync();
+            List<TodoItem> itemList = taskItemList.Result;
             DataPoint[] points = new DataPoint[itemList.Count];
             int i = 0;
             foreach (TodoItem item in itemList)
