@@ -20,6 +20,8 @@ namespace SQLiteSample
         {
             return database.Table<TodoItem>().ToListAsync();
         }
+        
+
 
         public Task<List<TodoItem>> GetItemsNotDoneAsync()
         {

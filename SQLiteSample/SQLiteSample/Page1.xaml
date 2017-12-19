@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SQLiteSample"
+             xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
+             x:Class="SQLiteSample.Page1"
+                          Title="GraphPage">
+
+    <ContentPage.Content>
+            <StackLayout>
+                <oxy:PlotView Model="{Binding Model}"
+                          VerticalOptions="FillAndExpand"
+                          HorizontalOptions="FillAndExpand">
+                    <oxy:PlotView.BindingContext>
+                        <local:LineChart />
+                    </oxy:PlotView.BindingContext>
+                </oxy:PlotView>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
